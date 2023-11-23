@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt update -y && \
-    apt upgrade -y && \
-    apt install git -y
+WORKDIR /root
+COPY ./build.sh /root
+COPY ./tmux.conf /root
+RUN chmod +x ./build.sh && ./build.sh
